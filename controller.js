@@ -33,7 +33,7 @@ exports.tampilBerdasarId = function (req, res) {
 
 
 //menambahkan data mahasiswa
-exports.tambahMahasiswa = function (req,res) {
+exports.tambahMahasiswa = function (req, res) {
     let nim = req.body.nim;
     let nama = req.body.nama;
     let jurusan = req.body.jurusan;
@@ -44,9 +44,24 @@ exports.tambahMahasiswa = function (req,res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Berhasil menambahkan Data!",res)
+                response.ok("Berhasil menambahkan Data!", res)
             }
-        }
-    )
+        });
+};
 
-}
+//mengubah data berdasarkan id mahasiswa
+exports.ubahMahasiswa = function (req, res) {
+    let id = req.body.id_mahasiswa;
+    let nim = req.body.nim;
+    let nama = req.body.nama;
+    let jurusan = req.body.jurusan;
+
+    connection.query("UPDATE mahasiswa SET nim=?,nama=?,jurusan=? WHERE id_mahasiswa =?", [nim, nama, jurusan,id],
+    function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Data berhasil di ubah",res)
+            }
+        });
+};
