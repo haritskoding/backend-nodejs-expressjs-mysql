@@ -1,2 +1,12 @@
 git push -f origin master
 express mysql handlebars
+ALTER TABLE `krs` ADD FOREIGN KEY (`id_mhs`) REFERENCES `mahasiswa`(`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `krs` ADD FOREIGN KEY (`id_matkul`) REFERENCES `matakuliah`(`id_matakuliah`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+SELECT mahasiswa.id_mahasiswa,mahasiswa.nim,mahasiswa.nama,mahasiswa.jurusan,matakuliah.matakuliah,matakuliah.sks
+FROM krs
+JOIN matakuliah
+JOIN mahasiswa
+WHERE krs.id_matkul=matakuliah.id_matakuliah
+AND krs.id_mhs = mahasiswa.id_mahasiswa
+ORDER BY mahasiswa.id_mahasiswa

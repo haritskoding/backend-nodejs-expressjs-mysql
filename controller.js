@@ -66,7 +66,7 @@ exports.ubahMahasiswa = function (req, res) {
         });
 };
 
-
+//menghapus data berdasarkan id mahasiswa
 exports.hapusMahasiswa = function (req, res) {
     let id = req.body.id;
 
@@ -79,3 +79,17 @@ exports.hapusMahasiswa = function (req, res) {
             }
         });
 };
+
+
+//menampilkan matakuliah group
+exports.tampilGroupMatkul = function (req, res) {
+    connection.query('SELECT mahasiswa.id_mahasiswa,mahasiswa.nim,mahasiswa.nama,mahasiswa.jurusan,matakuliah.matakuliah,matakuliah.sks FROM krs JOIN matakuliah JOIN mahasiswa WHERE krs.id_matkul = matakuliah.id_matakuliah AND krs.id_mhs = mahasiswa.id_mahasiswa ORDER BY mahasiswa.id_mahasiswa',
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.oknested(rows, res)
+            }
+        }
+    )
+}
