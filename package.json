@@ -1,0 +1,25 @@
+{
+  "name": "app-rest-api",
+  "version": "1.0.0",
+  "description": "Membuat Rest API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haritskoding/restapi-express-mysql-nodejs.git"
+  },
+  "keywords": [
+    "(rest",
+    "api",
+    "node",
+    "js)"
+  ],
+  "author": "Aris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haritskoding/restapi-express-mysql-nodejs/issues"
+  },
+  "homepage": "https://github.com/haritskoding/restapi-express-mysql-nodejs#readme"
+}
