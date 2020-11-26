@@ -13,10 +13,10 @@ exports.registrasi = function (req, res) {
         email: req.body.email,
         password: md5(req.body.password),
         role: req.body.role,
-        tanggal_daftar: new Date();
+        tanggal_daftar: new Date()
     }
 
-    let query = "SELECT email FROM ?? WHERE ";
+    let query = "SELECT email FROM ?? WHERE ??=?";
     let table = ["user", "email", post.email];
 
     query = mysql.format(query, table);
@@ -29,16 +29,16 @@ exports.registrasi = function (req, res) {
                 let query = "INSERT INTO ?? SET ?";
                 let table = ["user"];
                 query = mysql.format(query, table);
-                connection.query(query, post, functon(error, rows){
-                    if(error) {
+                connection.query(query, post, function (error, rows) {
+                    if (error) {
                         console.log(error);
-                    }else{
+                    } else {
                         response.ok("Berhassil menambahkan data user baru", res);
                     }
-                });
+                })
             } else {
-                response.ok("Email sudah terdaftar Oke")
+                response.ok("Email sudah terdaftar Oke",res)
             }
         }
-    })
-}
+    });
+};
